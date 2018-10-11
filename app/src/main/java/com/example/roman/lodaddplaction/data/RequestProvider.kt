@@ -3,5 +3,6 @@ package com.example.roman.lodaddplaction.data
 import com.example.roman.lodaddplaction.models.RequestModel
 
 interface RequestProvider {
-    fun getRequests() : List<RequestModel>
+
+    fun getRequests(): List<RequestModel>
 }

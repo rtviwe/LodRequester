@@ -1,4 +1,14 @@
 <resources>
-    <string name="app_name">аппликация</string>
-    <string name="hello_world">Дарова, бандиты</string>
+    <string name="app_name">LodApplication</string>
+    <string name="search_for_requests">Поиск запросов</string>
+    <string name="photo_of_search">Фото запроса</string>
+    <string name="name_of_request_hint">Введите название заявки</string>
+    <string name="description_of_request_hint">Введите описание заявки</string>
+    <string name="step_1_title">Новая заявка. Шаг 1/2</string>
+    <string name="step_2_title">Новая заявка. Шаг 2/2</string>
+    <string name="next">Следующий</string>
+    <string name="tags_via_space_hint">Введите теги через пробел</string>
+    <string name="value_hint">Введите стоимость</string>
+    <string name="error_no_name">Введите название</string>
+    <string name="error_no_description">Введите описание</string>
 </resources>

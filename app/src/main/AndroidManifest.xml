@@ -11,14 +11,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".main.MainActivity"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".models.RequestDetailsActivity"></activity>
+
+        <activity
+            android:name=".detail.RequestDetailsActivity"
+            android:parentActivityName=".main.MainActivity"
+            android:theme="@style/AppTheme.DetailsRequest" />
+
+        <activity
+            android:name=".createRequest.CreateRequestActivity"
+            android:parentActivityName=".main.MainActivity"
+            android:theme="@style/AppTheme.CreateRequest" />
     </application>
 
 </manifest>
