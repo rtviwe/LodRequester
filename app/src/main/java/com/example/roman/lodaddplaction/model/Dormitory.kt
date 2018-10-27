@@ -1,4 +1,4 @@
-package com.example.roman.lodaddplaction.models
+package com.example.roman.lodaddplaction.model
 
 enum class Dormitory(val title: String) {
     GORNYAK1("Горняк-1"),

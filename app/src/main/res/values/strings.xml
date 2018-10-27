@@ -11,4 +11,8 @@
     <string name="value_hint">Enter value</string>
     <string name="error_no_name">Enter name</string>
     <string name="error_no_description">Enter description</string>
+    <string name="hint_login">Enter yout login</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
 </resources>

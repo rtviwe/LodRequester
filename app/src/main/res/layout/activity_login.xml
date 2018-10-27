@@ -5,27 +5,30 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/et_tags_of_request"
+        android:id="@+id/et_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/tags_via_space_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="32dp"
+        android:hint="@string/hint_login"
+        android:inputType="textPersonName"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/et_money_of_request"
+        android:id="@+id/et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/et_login" />
+
+    <Button
+        android:id="@+id/b_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:hint="@string/value_hint"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/login_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_tags_of_request" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

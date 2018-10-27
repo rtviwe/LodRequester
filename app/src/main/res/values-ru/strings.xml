@@ -11,4 +11,8 @@
     <string name="value_hint">Введите стоимость</string>
     <string name="error_no_name">Введите название</string>
     <string name="error_no_description">Введите описание</string>
+    <string name="hint_login">Введите имя пользователя</string>
+    <string name="password_hint">Введите пароль</string>
+    <string name="login_button">Войти</string>
+    <string name="register_button">Зарегистрироваться</string>
 </resources>

@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.example.roman.lodaddplaction.R
-import com.example.roman.lodaddplaction.models.Dormitory
+import com.example.roman.lodaddplaction.database.request.DormitoryTypeConverter
+import com.example.roman.lodaddplaction.model.Dormitory
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.step1_fragment.*
 
 class FragmentCreateStep1 : Fragment() {
@@ -23,7 +25,7 @@ class FragmentCreateStep1 : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val spinnerAdapter = ArrayAdapter<String>(context,
+        val spinnerAdapter = ArrayAdapter<String>(context!!,
                 android.R.layout.simple_spinner_dropdown_item, dormitories)
 
         spinner_dormitory.apply {
@@ -31,4 +33,14 @@ class FragmentCreateStep1 : Fragment() {
             setSelection(0)
         }
     }
+
+    fun showError(view: TextInputEditText, messageRes: Int) {
+        view.error = getString(messageRes)
+    }
+
+    fun getNameOfRequest() = et_name_of_request.text.toString()
+
+    fun getDescOfRequest() = et_desc_of_request.text.toString()
+
+    fun getDormOfRequest() = DormitoryTypeConverter().toDormitory(spinner_dormitory.selectedItemPosition)
 }

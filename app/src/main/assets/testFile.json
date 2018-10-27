@@ -1,0 +1,12 @@
+{
+  "description": "Просто нужно курнутб",
+  "dormitory": "DSG",
+  "id": 1,
+  "title": "Что-то сделать",
+  "user": {
+    "avatarUrl": "https://www.gessato.com/wp-content/uploads/2016/03/human-by-yann-arthus-bertrand-gessato-30.jpg",
+    "id": 1,
+    "name": "qwerty12345",
+    "password": "Yakut"
+  }
+}

@@ -4,14 +4,27 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProviders
 import com.example.roman.lodaddplaction.R
+import com.example.roman.lodaddplaction.model.Dormitory
+import com.example.roman.lodaddplaction.model.Request
+import com.example.roman.lodaddplaction.model.Tag
+import com.example.roman.lodaddplaction.model.User
 import kotlinx.android.synthetic.main.step1_fragment.*
 
 class CreateRequestActivity : AppCompatActivity() {
 
     private lateinit var titleStep1: String
     private lateinit var titleStep2: String
+    private lateinit var nameOfRequest: String
+    private lateinit var tagsOfRequest: List<Tag>
+    private lateinit var descOfRequest: String
+    private lateinit var dormOfRequest: Dormitory
 
+    private lateinit var createRequestViewModel: CreateRequestViewModel
+
+    private lateinit var firstStepFragment: FragmentCreateStep1
+    private lateinit var secondStepFragment: FragmentCreateStep2
     private var currentStep = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,15 +33,17 @@ class CreateRequestActivity : AppCompatActivity() {
 
         titleStep1 = getString(R.string.step_1_title)
         titleStep2 = getString(R.string.step_2_title)
+        createRequestViewModel = ViewModelProviders.of(this).get(CreateRequestViewModel::class.java)
 
         currentStep = 1
 
+        firstStepFragment = FragmentCreateStep1()
+        secondStepFragment = FragmentCreateStep2()
         setCurrentStepFragment()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
-
         return true
     }
 
@@ -44,7 +59,6 @@ class CreateRequestActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.actionbar_menu, menu)
-
         return true
     }
 
@@ -61,33 +75,39 @@ class CreateRequestActivity : AppCompatActivity() {
     private fun handleNextButton() {
         when (currentStep) {
             1 -> {
-                if (check()) {
+                collectInfoFromFirstFragment()
+                if (check(nameOfRequest, descOfRequest)) {
                     currentStep = 2
                     setCurrentStepFragment()
                 } else {
-                    showErrors()
+                    showErrorsOnFirstFragment()
                 }
             }
             2 -> {
+                collectInfoFromSecondFragment()
                 createRequest()
             }
         }
     }
 
-    private fun check(): Boolean {
-        if (!et_name_of_request.text!!.isBlank()
-                and !et_desc_of_request.text!!.isBlank()) {
-            return true
-        }
-        return false
+    private fun collectInfoFromFirstFragment() {
+        nameOfRequest = firstStepFragment.getNameOfRequest()
+        descOfRequest = firstStepFragment.getDescOfRequest()
+        dormOfRequest = firstStepFragment.getDormOfRequest()
     }
 
-    private fun showErrors() {
-        if (et_name_of_request.text!!.isEmpty()) {
-            et_name_of_request.error = getString(R.string.error_no_name)
+    private fun collectInfoFromSecondFragment() {
+        tagsOfRequest = secondStepFragment.getTagsOfRequest()
+    }
+
+    private fun check(first: String, second: String) = (!first.isBlank() and !second.isBlank())
+
+    private fun showErrorsOnFirstFragment() {
+        if (nameOfRequest.isBlank()) {
+            firstStepFragment.showError(et_name_of_request, R.string.error_no_name)
         }
-        if (et_desc_of_request.text!!.isEmpty()) {
-            et_desc_of_request.error = getString(R.string.error_no_description)
+        if (descOfRequest.isBlank()) {
+            firstStepFragment.showError(et_desc_of_request, R.string.error_no_description)
         }
     }
 
@@ -95,11 +115,11 @@ class CreateRequestActivity : AppCompatActivity() {
         val fragment = when (currentStep) {
             1 -> {
                 supportActionBar?.title = titleStep1
-                FragmentCreateStep1()
+                firstStepFragment
             }
             2 -> {
                 supportActionBar?.title = titleStep2
-                FragmentCreateStep2()
+                secondStepFragment
             }
             else -> throw Exception("Step $currentStep not found")
         }
@@ -111,6 +131,17 @@ class CreateRequestActivity : AppCompatActivity() {
     }
 
     private fun createRequest() {
+        // TODO get actual current user
+        val user = User("name", "12345",
+                "https://pp.userapi.com/c847216/v847216475/5d526/YGOIQoc-GhI.jpg")
+
+        val request = Request(
+                nameOfRequest,
+                descOfRequest,
+                dormOfRequest,
+                user)
+
+        createRequestViewModel.addRequestAndTags(request, tagsOfRequest)
         finish()
     }
 }

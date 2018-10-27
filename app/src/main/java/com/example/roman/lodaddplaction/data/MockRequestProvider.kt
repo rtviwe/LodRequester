@@ -1,104 +1,97 @@
 package com.example.roman.lodaddplaction.data
 
-import com.example.roman.lodaddplaction.models.*
+import com.example.roman.lodaddplaction.database.RequestWithTags
+import com.example.roman.lodaddplaction.model.*
+import io.reactivex.Flowable
 
 object MockRequestProvider : RequestProvider {
 
-    private val listOfRequests = mutableListOf(
-            RequestModel("Помочь настроить принтер",
-                    listOf(Tag("IT"), Tag("Принтеры")),
-                    "Ничего не рОБОТОЕТ",
-                    null,
-                    UserModel("Макаров",
-                            "http://old.misis.ru/portals/0/Kaf_matem/Макаров%20П.В.jpg")
-            ),
-            RequestModel("Подайте на сигареты",
-                    listOf(Tag("150р", TagType.MONEY), Tag("Подать")),
-                    "Просто нужно курнутб",
-                    Dormitory.M2,
-                    null
-            ),
-            RequestModel("Найти кошку",
-                    listOf(Tag("Срочно"), Tag("7-11 этажи"), Tag("Кошка"), Tag("!!!"),
-                            Tag("!!!!!!!!!!!"), Tag("Животное"), Tag("Поиски")),
-                    "Вам срочно нужно искать кота",
-                    Dormitory.M3,
-                    UserModel("Анатолий Ямщиков",
-                            "https://pp.userapi.com/c847216/v847216475/5d526/YGOIQoc-GhI.jpg")
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            ),
-            RequestModel("Какая-то просьба",
-                    listOf(Tag("Тэг")),
-                    "Что-то там сделать",
-                    null,
-                    null
-            )
-    )
+    private val user = User("Yakut", "qwerty12345",
+            "https://www.gessato.com/wp-content/uploads/2016/03/human-by-yann-arthus-bertrand-gessato-30.jpg")
 
-    override fun getRequests(): List<RequestModel> = listOfRequests
+    private val listOfRequests = Flowable.just<List<RequestWithTags>>(listOf(
+            RequestWithTags(
+                    Request("Настроить принтер", "Ничего не рОБОТАЕТ", Dormitory.M4, user),
+                    listOf(Tag("Компухтер", TagType.DEFAULT, 0))),
+            RequestWithTags(
+                    Request("Подать на сигареты", "Просто нужно курнутб", Dormitory.GORNYAK2, user),
+                    listOf(Tag("Сигареты", TagType.DEFAULT, 0), Tag("150", TagType.MONEY, 0))),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf()),
+            RequestWithTags(
+                    Request("Что-то сделать", "Что-то там", Dormitory.M1, null),
+                    listOf())
+    ))
+
+    override fun getRequests(): Flowable<List<RequestWithTags>> = listOfRequests
 }

@@ -3,17 +3,17 @@ package com.example.roman.lodaddplaction.detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.roman.lodaddplaction.R
-import com.example.roman.lodaddplaction.models.RequestModel
+import com.example.roman.lodaddplaction.model.Request
 
 class RequestDetailsActivity : AppCompatActivity() {
 
-    private lateinit var requestModel: RequestModel
+    private lateinit var requestModel: Request
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_request_details)
 
-        requestModel = intent.getSerializableExtra(DATA_EXTRA) as RequestModel
+        requestModel = intent.getSerializableExtra(REQUEST_EXTRA) as Request
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -24,6 +24,6 @@ class RequestDetailsActivity : AppCompatActivity() {
 
     companion object {
 
-        const val DATA_EXTRA = "data"
+        const val REQUEST_EXTRA = "request_extra_data"
     }
 }
