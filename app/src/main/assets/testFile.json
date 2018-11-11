@@ -1,12 +1,56 @@
-{
-  "description": "Просто нужно курнутб",
-  "dormitory": "DSG",
-  "id": 1,
-  "title": "Что-то сделать",
-  "user": {
-    "avatarUrl": "https://www.gessato.com/wp-content/uploads/2016/03/human-by-yann-arthus-bertrand-gessato-30.jpg",
-    "id": 1,
-    "name": "qwerty12345",
-    "password": "Yakut"
+[
+  {
+    "request": {
+      "description": "Починить принтер надо срочно очень",
+      "dormitory": "M4",
+      "id": 1,
+      "title": "Починить принтер",
+      "user": {
+        "avatarUrl": "http://old.misis.ru/portals/0/Kaf_matem/Макаров%20П.В.jpg",
+        "id": 1,
+        "latitude": 55.4507,
+        "longitude": 37.3656,
+        "name": "qwerty12345",
+        "password": "Makarov"
+      }
+    },
+    "tags": [
+      {
+        "body": "Компухтер",
+        "id": 1,
+        "requestId": 1,
+        "type": "DEFAULT"
+      }
+    ]
+  },
+  {
+    "request": {
+      "description": "Просто нужно курнутб",
+      "dormitory": "GORNYAK2",
+      "id": 2,
+      "title": "Подать на сигареты",
+      "user": {
+        "avatarUrl": "https://pp.userapi.com/c639526/v639526035/61cab/7j8a-7wtGOU.jpg",
+        "id": 2,
+        "latitude": 69.69,
+        "longitude": 69.69,
+        "name": "qwerty12345",
+        "password": "Vova"
+      }
+    },
+    "tags": [
+      {
+        "body": "150",
+        "id": 2,
+        "requestId": 2,
+        "type": "MONEY"
+      },
+      {
+        "body": "Сигареты",
+        "id": 3,
+        "requestId": 2,
+        "type": "DEFAULT"
+      }
+    ]
   }
-}
+]

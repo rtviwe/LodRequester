@@ -15,4 +15,6 @@
     <string name="password_hint">Введите пароль</string>
     <string name="login_button">Войти</string>
     <string name="register_button">Зарегистрироваться</string>
+    <string name="button_filter_money">Стоимость</string>
+    <string name="button_filter_distance">Расстояние</string>
 </resources>

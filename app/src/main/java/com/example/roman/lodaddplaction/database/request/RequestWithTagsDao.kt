@@ -19,7 +19,7 @@ interface RequestWithTagsDao {
     fun deleteRequest(request: Request)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertTags(tags: List<Tag>)
+    fun insertTag(tag: Tag): Long
 
     @Update
     fun updateTag(tag: Tag)

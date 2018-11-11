@@ -35,4 +35,5 @@
         <item name="android:textStyle">normal</item>
         <item name="android:typeface">sans</item>
     </style>
+
 </resources>

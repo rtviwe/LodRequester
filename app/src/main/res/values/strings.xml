@@ -15,4 +15,6 @@
     <string name="password_hint">Enter your password</string>
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
+    <string name="button_filter_money">Money</string>
+    <string name="button_filter_distance">Location</string>
 </resources>

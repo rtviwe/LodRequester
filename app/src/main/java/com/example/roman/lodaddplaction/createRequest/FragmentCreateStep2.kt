@@ -17,12 +17,12 @@ class FragmentCreateStep2 : Fragment() {
         return inflater.inflate(R.layout.step2_fragment, container, false)
     }
 
-    fun getTagsOfRequest() = getTagsFrom(et_tags_of_request, TagType.DEFAULT) + getTagsFrom(et_money_of_request, TagType.MONEY)
+    fun getTagsOfRequest() =
+        getTagsFrom(et_tags_of_request, TagType.DEFAULT) + getTagsFrom(et_money_of_request, TagType.MONEY)
 
-    private fun getTagsFrom(textView: TextView, tagType: TagType) = textView.text
-            .toString()
-            .trim()
-            .split(" ")
-            .filter(String::isNotBlank)
-            .map { Tag(it, tagType, 0) }
+    private fun getTagsFrom(textView: TextView, tagType: TagType) = textView.text.toString()
+        .trim()
+        .split(" ")
+        .filter(String::isNotBlank)
+        .map { Tag(it, tagType) }
 }

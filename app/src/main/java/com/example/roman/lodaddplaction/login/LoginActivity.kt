@@ -38,7 +38,7 @@ class LoginActivity : Activity() {
 
     private fun checkIfLogged(): Boolean {
         val token = getSharedPreferences("default", Context.MODE_PRIVATE)
-                .getString("accessToken", "")
+            .getString("accessToken", "")
         return token?.length == 25
     }
 
@@ -52,24 +52,28 @@ class LoginActivity : Activity() {
 
     private fun login() {
         enableInput(false)
-        disposable = loginInteractor.login(LoginRequestDto(et_login.text.toString(),
-                et_password.text.toString()))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    getSharedPreferences("default", Context.MODE_PRIVATE)
-                            .edit()
-                            .putString("accessToken", it.accessToken)
-                            .apply()
+        disposable = loginInteractor.login(
+            LoginRequestDto(
+                et_login.text.toString(),
+                et_password.text.toString()
+            )
+        )
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                getSharedPreferences("default", Context.MODE_PRIVATE)
+                    .edit()
+                    .putString("accessToken", it.accessToken)
+                    .apply()
 
-                    openMainActivity()
-                    finish()
-                }, {
-                    it.printStackTrace()
-                    Toast.makeText(baseContext, "Wrong creds", Toast.LENGTH_SHORT)
-                            .show()
-                    enableInput(true)
-                })
+                openMainActivity()
+                finish()
+            }, {
+                it.printStackTrace()
+                Toast.makeText(baseContext, "Wrong creds", Toast.LENGTH_SHORT)
+                    .show()
+                enableInput(true)
+            })
     }
 
     private fun checkInput(): Boolean {
@@ -95,8 +99,8 @@ class LoginActivity : Activity() {
     }
 
     private fun openMainActivity() {
-        Intent(this@LoginActivity, MainActivity::class.java).apply {
-            this@LoginActivity.startActivity(this)
+        Intent(baseContext, MainActivity::class.java).apply {
+            baseContext.startActivity(this)
         }
     }
 }

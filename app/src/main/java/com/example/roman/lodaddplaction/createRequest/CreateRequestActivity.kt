@@ -6,6 +6,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.roman.lodaddplaction.R
+import com.example.roman.lodaddplaction.data.getLocation
 import com.example.roman.lodaddplaction.model.Dormitory
 import com.example.roman.lodaddplaction.model.Request
 import com.example.roman.lodaddplaction.model.Tag
@@ -22,7 +23,6 @@ class CreateRequestActivity : AppCompatActivity() {
     private lateinit var dormOfRequest: Dormitory
 
     private lateinit var createRequestViewModel: CreateRequestViewModel
-
     private lateinit var firstStepFragment: FragmentCreateStep1
     private lateinit var secondStepFragment: FragmentCreateStep2
     private var currentStep = 0
@@ -125,21 +125,28 @@ class CreateRequestActivity : AppCompatActivity() {
         }
 
         supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commitAllowingStateLoss()
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commitAllowingStateLoss()
     }
 
     private fun createRequest() {
-        // TODO get actual current user
-        val user = User("name", "12345",
-                "https://pp.userapi.com/c847216/v847216475/5d526/YGOIQoc-GhI.jpg")
+        val location = getLocation(baseContext)
+
+        val user = User(
+            name = "Bob",
+            password = "qwerty12345",
+            avatarUrl = "",
+            latitude = location?.latitude,
+            longitude = location?.longitude
+        )
 
         val request = Request(
-                nameOfRequest,
-                descOfRequest,
-                dormOfRequest,
-                user)
+            title = nameOfRequest,
+            description = descOfRequest,
+            dormitory = dormOfRequest,
+            user = user
+        )
 
         createRequestViewModel.addRequestAndTags(request, tagsOfRequest)
         finish()
